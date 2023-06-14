@@ -42,7 +42,7 @@
             <li class="nav-item">
                 <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" >
                 <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
             </li>
             <li class="nav-item">
@@ -55,10 +55,12 @@
                 <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
             </li>
             </ul>
+            {% if mostrar_en_navbar %}
             <form class="d-flex">
             <input class="form-control me-2" type="text" placeholder="Busca aqui..." id="barraBusqueda">
             <button class="btn btn-danger search-btn" type="button">Buscar</button>
             </form>
+            {% endif %}
         </div> 
         </div>
     </nav> 
@@ -73,6 +75,8 @@
         {% block third_content %}{% endblock %}
 
         {% block fourth_content %}{% endblock %}
+
+        {% block fifth_content %}{% endblock %}
     
     </main>
 
