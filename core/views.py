@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.urls import resolve
 from crud.models import *
 
 # Create your views here.
@@ -9,7 +10,8 @@ def index(request):
     return render(request,'core/index.html')
 
 def productos(request):
-    return render(request,'core/productos.html')
+    mostrar_en_navbar = True
+    return render(request,'core/productos.html', {'mostrar_en_navbar': mostrar_en_navbar})
 
 def eventos(request):
     return render(request,'core/eventos.html')
