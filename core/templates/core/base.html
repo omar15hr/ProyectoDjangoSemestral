@@ -178,9 +178,13 @@
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
+    <!--LINK GOOGLE -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--LINK DE JAVASCRIPT-->
     <script src="{% static 'core/js/validation.js' %}""></script>
 
-    {% block js_mine %}{% endblock %}
+    {% block js_mine %}
+    <script src="{% static 'core/js/validation.js' %}""></script>
+    {% endblock %}
 </body>
 </html>
