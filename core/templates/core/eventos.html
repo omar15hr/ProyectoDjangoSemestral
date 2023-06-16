@@ -121,7 +121,7 @@
           <div id="textoHora">
             <h3 class="textoModoOscuro">¡Ve la hora!</h3>
             <h5>¿Aun no reservas una mesa?</h5>
-            <button class="btn btn-primary" id="btnReloj">Reserva ya</button>
+            <button class="btn btn-primary" id="btnReloj" onclick="window.location.href='{% url 'contacto' %}' ">Reserva ya</button>
           </div>
         </div>
     </div>
@@ -138,7 +138,7 @@
             <h3 class="textoModoOscuro">Contactanos para organizar tu evento</h3>
             <p id="textoContexto2Eventos">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum inventore suscipit veniam? Impedit perferendis unde libero commodi enim quibusdam, architecto molestiae iusto voluptate possimus sequi itaque reiciendis repudiandae ducimus animi praesentium voluptates ipsa quisquam maxime optio sit? Minima, id quia.</p>
             <p id="textoContexto2Eventos">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat distinctio, cum animi laudantium necessitatibus similique? Est amet eaque impedit, animi tempora cupiditate ipsum explicabo mollitia officia cumque quo consectetur reprehenderit.</p>
-            <button class="btn btn-primary" id="btnContextoEventos" onclick="window.location.href='contacto.html'">Contactanos</button>
+            <button class="btn btn-primary" id="btnContextoEventos" onclick="window.location.href='{% url 'contacto' %}' ">Contactanos</button>
           </div>
           <div class="col-md-6 mt-3">
             <img src="{% static 'core/img/img16.jpg' %}" class="img-fluid rounded">
