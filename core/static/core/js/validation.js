@@ -173,7 +173,7 @@ $.ajax({
 });
 
 
-
+/*
   //FORMULARIO
 document.getElementById("error_nombre_vacio").style.display="none";
 document.getElementById("error_nombre_size").style.display="none";
@@ -354,7 +354,7 @@ function contadorTextarea(obj){
         contadorComentario.innerHTML = numC +' caracteres restantes.';
     }
 }
-
+*/
 
 
 
