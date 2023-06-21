@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
-from .forms import *
+from .forms import * 
 
 # Create your views here.
 def root(request):

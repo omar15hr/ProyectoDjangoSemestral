@@ -1,0 +1,51 @@
+{% extends 'crud/base.html' %} 
+
+{% block title %}Lista de Producto{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+<section id="section">
+    <div class="container my-2">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre del plato</th>
+                        <th>Producto</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                        <th>Imagen</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for t in tipos %}
+            
+                    <tr>
+                        <td>{{t.nombre}}</td>
+                        <td>{{t.producto}}</td>
+                        <td>{{t.categoria}}</td>
+                        <td>${{t.valor}}</td>
+                        <td>
+                            {% if t.imagen %}
+                            <img src="{{t.imagen.url}}" class="img-fluid">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'producto_modificar' t.id %}" class="btn btn-info btn-sm">Modificar</a>
+                            <a href="#" onclick="eliminarProducto({{ t.id }})" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock%}

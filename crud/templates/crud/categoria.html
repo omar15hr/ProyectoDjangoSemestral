@@ -1,0 +1,57 @@
+{% extends 'crud/base.html' %} 
+
+{% block title %}Admin de productos y categorias{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+<section id="section" class="justify-content-center">
+    <div class="row">
+        
+        <form action="" method="post" class="mt-5">
+            {% csrf_token %}
+            <h3 class="fw-bold">Registro de Producto</h3>
+            <div class="form-group mt-4">
+                <label for="nombre" class="fw-bold">Nombre del producto:</label>
+                <div class="input-group">
+                    {{ form_producto.producto }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                <div class="row">
+                    <div class="col-6"><input type="reset" value="Cancelar" class="btn btn-secondary" id="btnContextoEventos"></div>
+                    <div class="col-6"><input type="submit" value="Guardar" class="btn btn-primary" id="btnReloj"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{mensaje}}
+
+</section>
+
+<section id="section" class="justify-content-center">
+    <div class="row">
+        
+        <form action="" method="post" class="mt-5">
+            {% csrf_token %}
+            <h3 class="fw-bold">Registro de Categoria</h3>
+            <div class="form-group mt-4">
+                <label for="nombre" class="fw-bold">Nombre de la categoria:</label>
+                <div class="input-group">
+                    {{ form_categoria.categoria }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                <div class="row">
+                    <div class="col-6"><input type="reset" value="Cancelar" class="btn btn-secondary" id="btnContextoEventos"></div>
+                    <div class="col-6"><input type="submit" value="Guardar" class="btn btn-primary" id="btnReloj"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{mensaje}}
+
+</section>
+
+{% endblock %}

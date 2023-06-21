@@ -1,0 +1,56 @@
+{% extends 'crud/base.html' %}
+
+{% block title %}Producto Nuevo{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+<section id="section" class="justify-content-center">
+    <div class="row">
+        
+        <form action="" method="post" class="mt-5">
+            {% csrf_token %}
+            <h3 class="fw-bold">Registro de Nuevo Plato</h3>
+            <div class="form-group mt-4">
+                <label for="nombre" class="fw-bold">Nombre del plato</label>
+                <div class="input-group">
+                    {{ form.nombre }}
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="nombre" class="fw-bold">Producto</label>
+                <div class="input-group">
+                    {{ form.producto }}
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="nombre" class="fw-bold">Categoria</label>
+                <div class="input-group">
+                    {{ form.categoria }}
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="nombre" class="fw-bold">Valor del plato</label>
+                <div class="input-group">
+                    {{ form.valor }}
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="nombre" class="fw-bold">Imagen del plato</label>
+                <div class="input-group">
+                    {{ form.imagen }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                <div class="row">
+                    <div class="col-6"><input type="reset" value="Cancelar" class="btn btn-secondary" id="btnContextoEventos"></div>
+                    <div class="col-6"><input type="submit" value="Guardar" class="btn btn-primary" id="btnReloj"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}
