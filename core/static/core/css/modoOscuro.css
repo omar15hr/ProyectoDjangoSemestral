@@ -409,9 +409,16 @@ SECCION 18 FORMULARIO
     color: var(--beige-pastel);
     border: none;
 }
+/*
+=============================================
+        CONTACTO FORMULARIO DJANGO 
+=============================================
+*/
+.custom-label{
+    font-size: 20px;
+}
 
 /*
-
 ========================
         FOOTER 
 ========================

@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+{% comment %} <section id="section" class="d-flex justify-content-center align-items-center">
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Cantidad</th>
+            <th>Comentario</th>
+        </tr>
+
+        {% for p in formulario%}
+
+        <tr>
+            <td>{{p.nombre | nombre}}</td>
+            <td>{{p.correo | correo}}</td>
+            <td>{{p.fecha_reserva | fecha_reserva}}</td>
+            <td>{{p.cantidad_personas | cantidad_personas}}</td>
+            <td>{{p.comentario | comentario}}</td>
+            <td>
+                
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</section> {% endcomment %}
+
+{% endblock %}
