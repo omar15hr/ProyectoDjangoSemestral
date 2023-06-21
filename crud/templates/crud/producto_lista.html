@@ -6,6 +6,28 @@
 
 {% block first_content %}
 
+{% block js %}
+<script>
+    function eliminarProducto(id){
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta acción no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Eliminar",
+            "reverseButtons":true,
+            "confirmButtonColor":"red"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/crud/eliminar_producto/"+id+"/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
 <section id="section">
     <div class="container my-2">
         <div class="table-responsive">
@@ -22,8 +44,9 @@
                 </thead>
 
                 <tbody>
+
                     {% for t in tipos %}
-            
+
                     <tr>
                         <td>{{t.nombre}}</td>
                         <td>{{t.producto}}</td>

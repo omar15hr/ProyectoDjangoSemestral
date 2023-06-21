@@ -353,3 +353,4 @@ function contadorTextarea(obj){
         contadorComentario.innerHTML = numC +' caracteres restantes.';
     }
 }
+

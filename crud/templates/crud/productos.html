@@ -1,0 +1,119 @@
+{% extends 'crud/base.html' %} 
+
+{% block title %}Editar Producto{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+  <!--Seccion 6 -- Cards con productos -->
+  <section class="services section-padding" id="section">
+    <div class="container" id="container4">
+      <div class="row">
+        <div class="col-8">
+          <h3 class="tituloProductos mt-5" id="textoTituloProductos">Nuestro platos principales</h3><hr>
+        </div>
+        <div class="col-4 mt-5">
+          <div class="modo" id="modo">
+            <h6 id=tituloAspecto>Modo Oscuro</h6>
+            <i class="fas fa-toggle-on"></i>
+          </div>
+      </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 mb-5" id="cards">
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'core/img/img4.jpg' %}" class="card-img-top h-100 w-100">
+            <div class="card-body" id="cartasProductos">
+              <h4 class="card-title text-center"><b>Pizzas</b></h4>
+              <p class="card-text mt-3" id="textoCardProducto">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'core/img/img5.jpg' %}" class="card-img-top h-100 w-100">
+            <div class="card-body" id="cartasProductos">
+              <h4 class="card-title text-center"><b>Pastas</b></h4>
+              <p class="card-text mt-3" id="textoCardProducto">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="{% static 'core/img/img6.jpg' %}" class="card-img-top h-100 w-100">
+            <div class="card-body" id="cartasProductos">
+              <h4 class="card-title text-center"><b>Lasagnas</b></h4>
+              <p class="card-text mt-3" id="textoCardProducto">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block second_content %}
+  <!--Seccion 7 -- Contexto productos -->
+  <section class="about-section-padding" id="section">
+    <div class="container">
+        <div class="row" id="textoSeccion7">
+          <h2><i>Desde 1945...</i></h2>
+          <div class="col-md-6">
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium illum fugiat modi reprehenderit quae eveniet cumque debitis ad dolores itaque doloremque, saepe veniam autem, repellendus pariatur minus unde error nulla quaerat eius quia? Dicta architecto quae impedit magni expedita minima distinctio doloribus inventore dolorem recusandae, laudantium eligendi voluptas tempore.
+            <br><br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia atque nisi eaque non, enim iusto! Quas delectus itaque quam? Esse?
+            <br><br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quod aliquam voluptas? Reiciendis maxime quae nihil libero consectetur placeat, dignissimos repellendus deserunt est praesentium cumque nostrum nisi harum quis soluta eveniet quisquam tempore unde? Suscipit?
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'core/img/img9.jpg' %}" id="imagen1Producto" class="img-fluid rounded">
+          </div>
+        </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block third_content %}
+  <!--Seccion 8 -- Reloj -->
+  <section id="section" class="d-flex justify-content-center align-items-center">
+    <div class="row">
+      <div class="col-6 mt-5">
+        <div class="reloj">
+          <p class="fecha"></p>
+          <p class="tiempo"></p>
+        </div>
+      </div>
+        <div class="col-6 mt-5">
+          <div id="textoHora">
+            <h3 class="textoModoOscuro">¡Ve la hora!</h3>
+            <h5>¿Aun no reservas una mesa?</h5>
+            <button class="btn btn-primary" id="btnReloj" onclick="window.location.href='{% url 'contacto' %}' ">Reserva ya</button>
+          </div>
+        </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block fourth_content %}
+  <!--Seccion 9 Contexto 2 productos -->
+  <section class="about-section-padding" id="section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <img src="{% static 'core/img/img10.jpg' %}" class="img-fluid rounded" id="imagen2Productos">
+        </div>
+        <div class="col-md-6" id="textoContexto2Producto">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat minima ratione sunt odit amet labore. Iusto maiores odio fugiat beatae ab doloribus cum reprehenderit error aperiam enim est repellat exercitationem obcaecati velit iure dignissimos itaque officia, quo nesciunt? Quia, optio.
+          <br><br>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum deserunt eveniet fugit autem minima! Quibusdam dolores accusantium porro delectus at ad sapiente provident dolore optio. Consequatur quae quasi odit. Quibusdam consequatur, expedita error molestias alias sit quis temporibus, dolores accusamus, et ea quisquam blanditiis eligendi! Labore eveniet pariatur dolor repellendus.
+          <br><br>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi officiis mollitia praesentium aspernatur possimus necessitatibus est reprehenderit eveniet, repellendus natus harum provident sunt accusantium voluptatum quas tempore, consequuntur, eaque odio!
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

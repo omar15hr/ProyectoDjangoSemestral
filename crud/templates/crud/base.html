@@ -39,19 +39,16 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
+                <a class="nav-link" href="{% url 'productos' %}"  id="textoBarra">Productos</a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
+                <a class="nav-link"  href="{% url 'producto_lista' %}"  id="textoBarra">Lista de productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'eventos' %}"  id="textoBarra">Eventos</a>
+                <a class="nav-link" href="{% url 'producto_nuevo' %}"  id="textoBarra">Agregar un plato</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'nosotros' %}"  id="textoBarra">Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
+                <a class="nav-link" href="{% url 'categoria' %}"  id="textoBarra">Agregar un Producto o Categoria</a>
             </li>
             </ul>
             {% if mostrar_en_navbar %}
@@ -196,25 +193,6 @@
             </script>
         {% endfor %}
     {% endif %}
-
-    <script>
-        function eliminarProducto(id){
-            Swal.fire({
-                "title":"¿Estas seguro?",
-                "text":"Esta acción no se puede deshacer",
-                "icon":"question",
-                "showCancelButton":true,
-                "cancelButtonText":"No, Cancelar",
-                "confirmButtonText":"Si, Eliminar",
-                "confirmButtonColor":"red"
-            })
-            .then(function(result){
-                if(result.isConfirmed){
-                    window.location.href = "/eliminar_producto/"+id+"/"
-                }
-            })
-        }
-    </script>
 
     {% block js_mine %}
     <script src="{% static 'core/js/validation.js' %}"></script>

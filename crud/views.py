@@ -14,6 +14,9 @@ def producto_lista(request):
     }
     return render(request,'crud/producto_lista.html',data)
 
+def productos(request):
+    return render(request,'crud/productos.html')
+
 def producto_nuevo(request): 
     data = {
         'form': TipoForm()
