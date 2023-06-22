@@ -1,5 +1,4 @@
 from django.db import models
-import os
 
 # Create your models here.
 
@@ -36,7 +35,7 @@ class Cliente(models.Model):
         return self.rutCliente
     
 class TipoProducto(models.Model):
-    idTipoProducto = models.IntegerField(primary_key=True,verbose_name='Código Tipo Producto')
+    idTipoProducto = models.AutoField(primary_key=True,verbose_name='Código Tipo Producto')
     nombreTP = models.CharField(verbose_name='Descripción Producto',max_length=30)
     created_at = models.DateTimeField(verbose_name='Fecha registro',auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización',auto_now=True)
@@ -47,15 +46,15 @@ class TipoProducto(models.Model):
         ordering = ['idTipoProducto']
 
     def __str__(self) -> str:
-        return self.idTipoProducto
+        return self.nombreTP
     
     
 class Producto(models.Model):
-    idProducto = models.IntegerField(primary_key=True,verbose_name='Código Producto')
-    nombreProducto = models.CharField(verbose_name='Nombre Producto',max_length=50)
+    idProducto = models.AutoField(primary_key=True,verbose_name='Código Producto')
+    nombreProducto = models.CharField(verbose_name='Nombre Producto',max_length=30)
     precioProducto = models.IntegerField(verbose_name='Precio')
-    stockProducto = models.IntegerField(verbose_name='Cantidad')
-    idTipoProducto = models.ForeignKey(TipoProducto,verbose_name='Código Tipo Producto',on_delete=models.CASCADE)
+    imagenProducto = models.ImageField(verbose_name='Imagen',upload_to='productos', null=True,blank=True)
+    tipoProducto = models.ForeignKey(TipoProducto,verbose_name='Código Tipo Producto',on_delete=models.CASCADE)
     created_at = models.DateTimeField(verbose_name='Fecha registro',auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización',auto_now=True)
 
