@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class tipoCliente(models.Model):
+class TipoCliente(models.Model):
     idTipoCliente = models.IntegerField(primary_key=True,verbose_name='Código Tipo Cliente',max_length=1)
     nombreTC = models.CharField(verbose_name='Descripción Cliente',max_length='30')
     created_at = models.DateTimeField(verbose_name='Fecha registro',auto_now_add=True)
