@@ -12,7 +12,7 @@ class Producto(models.Model):
         verbose_name_plural = 'productos'
         ordering = ['producto']
     
-    def __str__(self) -> str:
+    def __str__(self) -> str: 
         return self.producto
 
 class Categoria(models.Model):
@@ -29,7 +29,7 @@ class Categoria(models.Model):
         return self.categoria
 
 class Tipo(models.Model):
-    nombre = models.CharField(verbose_name='Nombre', max_length=30)
+    nombre = models.CharField(verbose_name='Nombre', max_length=20)
     producto = models.ForeignKey(Producto, verbose_name='Producto', on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, verbose_name='Categoria', on_delete=models.CASCADE)
     valor = models.IntegerField(verbose_name='Valor unitario')

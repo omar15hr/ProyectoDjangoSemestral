@@ -1,58 +1,35 @@
 {% extends 'crud/base.html' %} 
 
-{% block title %}Editar Producto{% endblock %}
+{% block title %}Productos{% endblock %}
 
 {% load static %}
 
 {% block first_content %}
   <!--Seccion 6 -- Cards con productos -->
-  <section class="services section-padding" id="section">
-    <div class="container" id="container4">
-      <div class="row">
-        <div class="col-8">
-          <h3 class="tituloProductos mt-5" id="textoTituloProductos">Nuestro platos principales</h3><hr>
-        </div>
-        <div class="col-4 mt-5">
-          <div class="modo" id="modo">
-            <h6 id=tituloAspecto>Modo Oscuro</h6>
-            <i class="fas fa-toggle-on"></i>
+  <section id="section">
+    <div class="row">
+      {% for t in tipos %}
+      <div class="col-4 px-5 py-5">
+        <div class="card shadow">
+          {% if t.imagen %}
+          <img src="{{t.imagen.url}}" class="card-img-top img-fluid">
+          {% else %}
+          <img src="{% static 'crud/img/image_not_found.jpg' %}" class="card-img-top img-fluid w-200 h-200">
+          {% endif %}
+          <div class="card-body text-center" id="cartasProductos">
+            <p class="card-text fw-bold text-uppercase">{{t.nombre}}</p>
+            <p class="card-text">
+              {{t.producto}}
+            </p>
+            <p class="card-text">{{t.categoria}}</p>
+            <p class="card-text">${{t.valor}}</p>
           </div>
+        </div>
       </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 mb-5" id="cards">
-        <div class="col">
-          <div class="card h-100">
-            <img src="{% static 'core/img/img4.jpg' %}" class="card-img-top h-100 w-100">
-            <div class="card-body" id="cartasProductos">
-              <h4 class="card-title text-center"><b>Pizzas</b></h4>
-              <p class="card-text mt-3" id="textoCardProducto">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img src="{% static 'core/img/img5.jpg' %}" class="card-img-top h-100 w-100">
-            <div class="card-body" id="cartasProductos">
-              <h4 class="card-title text-center"><b>Pastas</b></h4>
-              <p class="card-text mt-3" id="textoCardProducto">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img src="{% static 'core/img/img6.jpg' %}" class="card-img-top h-100 w-100">
-            <div class="card-body" id="cartasProductos">
-              <h4 class="card-title text-center"><b>Lasagnas</b></h4>
-              <p class="card-text mt-3" id="textoCardProducto">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      {% endfor%}
     </div>
-  </section>
+</section>
+
 {% endblock %}
 
 {% block second_content %}

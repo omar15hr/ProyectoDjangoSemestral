@@ -52,9 +52,11 @@
                         <td>{{t.producto}}</td>
                         <td>{{t.categoria}}</td>
                         <td>${{t.valor}}</td>
-                        <td>
+                        <td class="w-25">
                             {% if t.imagen %}
                             <img src="{{t.imagen.url}}" class="img-fluid">
+                            {% else %}
+                            <img src="{% static 'crud/img/image_not_found.jpg' %}" class="img-fluid" alt="">
                             {% endif %}
                         </td>
                         <td>

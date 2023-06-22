@@ -15,7 +15,12 @@ def producto_lista(request):
     return render(request,'crud/producto_lista.html',data)
 
 def productos(request):
-    return render(request,'crud/productos.html')
+    tipos = Tipo.objects.all()
+
+    data = {
+        'tipos' : tipos
+    }
+    return render(request,'crud/productos.html',data)
 
 def producto_nuevo(request): 
     data = {
