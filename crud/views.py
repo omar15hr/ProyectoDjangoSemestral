@@ -1,83 +1,68 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import *
-from .forms import *
+from .forms import ProductoForm, TipoProductoForm
 from django.contrib import messages
 
 def root(request):
     return redirect(producto_lista)
 
-def producto_lista(request):
-    tipos = Tipo.objects.all()
-
+def producto_list(request):
+    productos = Producto.objects.all()
     data = {
-        'tipos' : tipos
+        'productos' : productos
     }
-    return render(request,'crud/producto_lista.html',data)
+    return render(request,'crud/producto_list.html',data)
 
 def productos(request):
-    tipos = Tipo.objects.all()
-
+    productos = Producto.objects.all()
     data = {
-        'tipos' : tipos
+        'productos' : productos
     }
     return render(request,'crud/productos.html',data)
 
-def producto_nuevo(request): 
+def producto_new(request): 
     data = {
-        'form': TipoForm()
+        'form': ProductoForm()
     }
-
     if request.method == 'POST':
-        formulario = TipoForm(data=request.POST, files=request.FILES)
+        formulario = ProductoForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
             messages.success(request,"Guardado correctamente")
             data["mensaje"] = "Guardado correctamente"
         else:
             data["form"] = formulario
+    return render(request,'crud/producto_new.html', data)
 
-    return render(request,'crud/producto_nuevo.html', data)
-
-def producto_modificar(request, id):
-    tipo = get_object_or_404(Tipo, id=id)
+def producto_edit(request, idProducto):
+    producto = get_object_or_404(Producto, idProducto=idProducto)
     data = {
-        'form':TipoForm(instance=tipo)
+        'form':ProductoForm(instance=producto)
     }
-
     if request.method == 'POST':
-        formulario = TipoForm(data=request.POST, instance=tipo, files=request.FILES)
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
             messages.success(request,"Modificado correctamente")
-            return redirect(to="producto_lista")
+            return redirect(to="producto_list")
         data["form"] = formulario
-    return render(request,'crud/producto_modificar.html',data)
+    return render(request,'crud/producto_edit.html',data)
 
-def categoria(request):
+def tipoProducto_new(request):
     data = {
-        'form_categoria' : Categoria(),
-        'form_producto' : Producto()
+        'form_tipoProducto' : TipoProductoForm()
     }
-
     if request.method == 'POST':
-        formulario = Categoria(data=request.POST, files=request.FILES)
+        formulario = TipoProductoForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
             data["mensaje"] = "Guardado correctamente"
         else:
             data["form"] = formulario
+    return render(request,'crud/tipoProducto_new.html', data)
 
-    if request.method == 'POST':
-        formulario = Producto(data=request.POST, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "Guardado correctamente"
-        else:
-            data["form"] = formulario
-    return render(request,'crud/categoria.html', data)
-
-def eliminar_producto(request, id):
-    tipo = get_object_or_404(Tipo, id=id)
-    tipo.delete()
+def producto_delete(request, idProducto):
+    producto = get_object_or_404(Producto, idProducto=idProducto)
+    producto.delete()
     messages.success(request, "Eliminado correctamente")
-    return redirect(to="producto_lista")
+    return redirect(to="producto_list")

@@ -30,7 +30,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark" id="barraModoOscuro">
         <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'contacto' %}'">
+        <a class="navbar-brand" href="#">
             <i>Italianisimo</i>
             <img class="nav-img" src="{% static 'core/img/img1.png' %}" alt="logo">
         </a>
@@ -39,20 +39,17 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}"  id="textoBarra">Productos</a>
+                </li>
             <li class="nav-item">
-                <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
+                <a class="nav-link" href="{% url 'producto_list' %}"  id="textoBarra">Lista de Productos</a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
+                <a class="nav-link"  href="{% url 'producto_new' %}"  id="textoBarra">Agregar Producto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'eventos' %}"  id="textoBarra">Eventos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'nosotros' %}"  id="textoBarra">Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
+                <a class="nav-link" href="{% url 'tipoProducto_new' %}"  id="textoBarra">Agregar Tipo de Producto</a>
             </li>
             </ul>
             {% if mostrar_en_navbar %}
@@ -182,6 +179,21 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--LINK DE JAVASCRIPT-->
     <script src="{% static 'core/js/validation.js' %}""></script>
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title":"Felicitaciones", 
+                    "text":"{{m}}",
+                    "icon":"success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
+
 
     {% block js_mine %}
     <script src="{% static 'core/js/validation.js' %}""></script>

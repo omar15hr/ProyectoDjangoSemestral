@@ -1,0 +1,74 @@
+{% extends 'crud/base.html' %} 
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+{% block js %}
+<script>
+    function eliminarProducto(idProducto){
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta acción no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Eliminar",
+            "reverseButtons":true,
+            "confirmButtonColor":"red"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/crud/producto_delete/"+idProducto+"/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
+<section id="section">
+    <div class="container my-2">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for p in productos %}
+
+                    <tr>
+                        <td>{{p.idProducto}}</td>
+                        <td>{{p.nombreProducto}}</td>
+                        <td>${{p.precioProducto}}</td>
+                        <td class="w-25">
+                            {% if p.imagenProducto %}
+                            <img src="{{p.imagenProducto.url}}" class="img-fluid">
+                            {% else %}
+                            <img src="{% static 'crud/img/image_not_found.jpg' %}" class="img-fluid" alt="">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'producto_edit' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a>
+                            <a href="#" onclick="eliminarProducto({{ p.idProducto }})" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock%}
