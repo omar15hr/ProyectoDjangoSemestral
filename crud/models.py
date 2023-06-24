@@ -29,7 +29,7 @@ class Cliente(models.Model):
     class Meta:
         verbose_name = 'cliente'
         verbose_name_plural = 'clientes'
-        ordering = ['rutCustomer']
+        ordering = ['rutCliente']
 
     def __str__(self) -> str:
         return self.rutCliente
