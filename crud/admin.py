@@ -1,5 +1,5 @@
-from django.contrib import admin
-from models import TipoCliente,Cliente,TipoProducto,Producto
+# from django.contrib import admin
+# from models import TipoCliente,Cliente,TipoProducto,Producto
 
 # Register your models here.
 
