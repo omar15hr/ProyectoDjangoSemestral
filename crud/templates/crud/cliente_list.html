@@ -1,0 +1,70 @@
+{% extends 'crud/base.html' %} 
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+{% block js %}
+<script>
+    function eliminarCliente(rutCliente){
+        Swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta acción no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Eliminar",
+            "reverseButtons":true,
+            "confirmButtonColor":"red"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/crud/producto_delete/"+rutCliente+"/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
+<section id="section">
+    <div class="container my-2">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>DvRut</th>
+                        <th>Email</th>
+                        <th>IdTipo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for c in cliente %}
+
+                    <tr>
+                        <td>{{c.rutCliente}}</td>
+                        <td>{{c.dvRutCliente}}</td>
+                        <td>{{c.nombreCliente}}</td>
+                        <td>{{c.telefonoCliente}}</td>
+                        <td>{{c.emailCliente}}</td>
+                        <td>{{c.idTipoCliente}}</td>
+                        <td>
+                            <a href="{% url 'producto_edit' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a>
+                            <a href="#" onclick="eliminarCliente({{ c.rutCliente }})" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock%}
