@@ -43,7 +43,7 @@ class ClienteForm(ModelForm):
         'dvRutCliente':forms.TextInput(attrs={'class':'form-control'}),
         'nombreCliente':forms.TextInput(attrs={'class':'form-control'}),
         'telefonoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-        'emailCliente':forms.EmailField(attrs={'class':'form-control'}),
+        'emailCliente':forms.EmailInput(attrs={'class':'form-control'}),
         'idTipoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
     }
 
