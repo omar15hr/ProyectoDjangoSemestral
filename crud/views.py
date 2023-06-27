@@ -78,7 +78,7 @@ def tipoCliente_new(request):
             data["mensaje"] = "Guardado correctamente"
         else:
             data["form"] = formulario
-    return render(request,'crud/tipoProducto_new.html', data)
+    return render(request,'crud/tipocliente_new.html', data)
 
 def tipoCliente_delete(request, idTipoCliente):
     tipocliente = get_object_or_404(TipoCliente, idTipoCliente=idTipoCliente)
