@@ -89,20 +89,21 @@ def tipoCliente_delete(request, idTipoCliente):
 def cliente_new(request):
     data = {
         'form_cliente' : ClienteForm()
-    }
+    } 
     if request.method == 'POST':
         formulario = ClienteForm(data=request.POST, files=request.FILES)
-        formulario.save()
-        data["mensaje"] = "Guardado correctamente"
-    else:
-        data["form"] = formulario
-    return render(request, 'crud/Cliente_new.html', data)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Guardado correctamente"
+        else:
+            data["form"] = formulario
+    return render(request, 'crud/cliente_new.html', data)
 
-def cliente_delete(request, idCliente):
-    cliente = get_object_or_404(Cliente, idCliente=idCliente)
+def cliente_delete(request, rutCliente):
+    cliente = get_object_or_404(Cliente, rutCliente=rutCliente)
     cliente.delete()
     messages.success(request, "Eliminado Correctamente")
-    return redirect(to="Cliente_list")
+    return redirect(to="cliente_list")
 
 def cliente_list(request):
     clientes = Cliente.objects.all()
@@ -121,7 +122,7 @@ def clientes(request):
 def cliente_edit(request, rutCliente):
     cliente = get_object_or_404(Cliente, rutCliente=rutCliente)
     data = {
-        'form':ClienteForm(instance=cliente)
+        'form_cliente':ClienteForm(instance=cliente)
     }
     if request.method == 'POST':
         formulario = ClienteForm(data=request.POST, instance=cliente, files=request.FILES)
@@ -131,7 +132,6 @@ def cliente_edit(request, rutCliente):
             return redirect(to="cliente_list")
         data["form"] = formulario
     return render(request,'crud/cliente_edit.html',data)
-
 
 def tipoProducto_list(request):
     tipoProductos = TipoProducto.objects.all()

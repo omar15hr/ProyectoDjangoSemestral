@@ -12,16 +12,10 @@
         <form action="" method="post" class="mt-5" enctype="multipart/form-data">
             {% csrf_token %}
             <h3 class="fw-bold">Registro de Nuevo Tipo de Cliente</h3>
-            <div class="form-group mt-4">
-                <label for="idTipoCliente" class="fw-bold">Código de tipo de cliente</label>
-                <div class="input-group">
-                    {{ form.idTipoCliente }}
-                </div>
-            </div>
             <div class="form-group mt-3">
                 <label for="nombreTC" class="fw-bold">Descripción del tipo de cliente</label>
                 <div class="input-group">
-                    {{ form.nombreTC }}
+                    {{ form_tipoCliente.nombreTC }}
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-5 mb-5">

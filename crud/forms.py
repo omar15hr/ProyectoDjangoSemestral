@@ -3,66 +3,50 @@ from django.forms import ModelForm
 from .models import *
 from django.forms import ValidationError
 
-class TipoClienteForm(models.Model):
-    model: TipoCliente
-    fields =[
-        'idTipoCliente',
-        'nombreTC',
-    ]
-    labels = {
-        'idTipoCliente':'Código Tipo Cliente',
-        'nombreTC':'Descripción Cliente',
-    }
-    widgets = {
-        'idTipoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-        'nombreTC':forms.TextInput(attrs={'class':'form-control'}),
-    }
+class TipoClienteForm(forms.ModelForm):
+    class Meta:
+        model = TipoCliente
+        fields =[
+            'nombreTC',
+        ]
+        widgets = {
+            'nombreTC':forms.TextInput(attrs={'class':'form-control'}),
+        }
 
 
-class ClienteForm(ModelForm):
-    model: Cliente
-    fields = [
-        'rutCliente',
-        'dvRutCliente',
-        'nombreCliente',
-        'telefonoCliente',
-        'emailCliente',
-        'idTipoCliente',
-    ]
-    labels = {
-        'rutCliente':'Rut Cliente',
-        'dvRutCliente':'DvRut Cliente',
-        'nombreCliente':'Nombre Cliente',
-        'telefonoCliente':'Teléfono Cliente',
-        'emailCliente':'Email Cliente',
-        'idTipoCliente':'Código Tipo Cliente',
+class ClienteForm(forms.ModelForm):
 
-    }
-    widgets = {
-        'rutCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-        'dvRutCliente':forms.TextInput(attrs={'class':'form-control'}),
-        'nombreCliente':forms.TextInput(attrs={'class':'form-control'}),
-        'telefonoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-        'emailCliente':forms.EmailInput(attrs={'class':'form-control'}),
-        'idTipoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-    }
+    nombreCliente = forms.CharField(min_length=1, max_length=20)
+    dvRutCliente = forms.CharField(min_length=1, max_length=1)
+    rutCliente = forms.CharField(min_length=7, max_length=8)
+    emailCliente = forms.EmailField(min_length=11,max_length=30)
+    telefonoCliente = forms.IntegerField(min_value=900000000, max_value=999999999)
 
-class TipoProductoForm(models.Model):
-    model: TipoProducto
-    fields =[
-        'idTipoProducto',
-        'nombreTP',
-    ]
-    labels = {
-        'idTipoProducto':'Código Tipo Producto',
-        'nombreTP':'Descripción Producto',
-    }
-    widgets = {
-        'idTipoProducto':forms.TextInput(attrs={'class':'form-control','type':'number'}),
-        'nombreTP':forms.TextInput(attrs={'class':'form-control'}),
-    }
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        widgets = {
+            'rutCliente':forms.TextInput(attrs={'class':'form-control'}),
+            'dvRutCliente':forms.TextInput(attrs={'class':'form-control'}),
+            'nombreCliente':forms.TextInput(attrs={'class':'form-control'}),
+            'telefonoCliente':forms.TextInput(attrs={'class':'form-control','type':'number'}),
+            'emailCliente':forms.EmailInput(attrs={'class':'form-control'}),
+            'nombreTC':forms.Select(attrs={'class':'form-control'}),
+        }
 
-class ProductoForm(ModelForm):
+class ProductoForm(forms.ModelForm):
+
+    nombreProducto = forms.CharField(min_length=5, max_length=20)
+    precioProducto = forms.IntegerField(min_value=3990, max_value=19990)
+
+    def clean_nombre(self):
+        nombreProducto = self.cleaned_data["nombre"]
+        existe = Producto.objects.filter(nombre__iexact=nombreProducto).exists()
+
+        if existe:
+            raise ValidationError("Este nombre ya existe")
+        return nombreProducto
+
     class Meta:
         model = Producto
         fields = '__all__'

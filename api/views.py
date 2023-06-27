@@ -30,3 +30,21 @@ class ProductoViewset(viewsets.ModelViewSet):
 class TipoProductoViewset(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+
+class ClienteViewset(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
+    def get_queryset(self):
+        clientes = Cliente.objects.all()
+
+        nombreCliente = self.request.GET.get('nombreCliente')
+
+        if nombreCliente:
+            clientes = clientes.filter(nombreCliente__contains=nombreCliente) #Sin el contains para que el filtro funcione exacto al nombre
+        
+        return clientes
+
+class TipoClienteViewset(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer

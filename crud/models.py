@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class TipoCliente(models.Model):
-    idTipoCliente = models.IntegerField(primary_key=True,verbose_name='Código Tipo Cliente')
+    idTipoCliente = models.AutoField(primary_key=True,verbose_name='Código Tipo Cliente')
     nombreTC = models.CharField(verbose_name='Descripción Cliente',max_length=30)
     created_at = models.DateTimeField(verbose_name='Fecha registro',auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización',auto_now=True)
@@ -14,15 +14,15 @@ class TipoCliente(models.Model):
         ordering = ['idTipoCliente']
 
     def __str__(self) -> str:
-        return self.idTipoCliente
+        return self.nombreTC
 
-class Cliente(models.Model):
-    rutCliente = models.IntegerField(primary_key=True,verbose_name='Rut Cliente')
+class Cliente(models.Model): 
+    rutCliente = models.CharField(primary_key=True,verbose_name='Rut Cliente',max_length=8)
     dvRutCliente = models.CharField(verbose_name='DvRut Cliente',max_length=1)
     nombreCliente = models.CharField(verbose_name='Nombre Cliente',max_length=100)
     telefonoCliente = models.IntegerField(verbose_name="Teléfono Cliente")
-    emailCiente = models.EmailField(verbose_name='Email Cliente',max_length=100)
-    idTipoCliente = models.ForeignKey(TipoCliente,verbose_name='Código Tipo Cliente',on_delete=models.CASCADE)
+    emailCliente = models.CharField(verbose_name='Email Cliente',max_length=100)
+    nombreTC = models.ForeignKey(TipoCliente,verbose_name='Tipo Cliente',on_delete=models.CASCADE)
     created_at = models.DateTimeField(verbose_name='Fecha registro',auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización',auto_now=True)
 
@@ -65,5 +65,3 @@ class Producto(models.Model):
 
     def __str__(self) -> str:
         return self.idProducto
-    
-

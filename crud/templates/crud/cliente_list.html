@@ -21,7 +21,7 @@
         })
         .then(function(result){
             if(result.isConfirmed){
-                window.location.href = "/crud/producto_delete/"+rutCliente+"/"
+                window.location.href = "/crud/cliente_delete/"+rutCliente+"/"
             }
         })
     }
@@ -34,27 +34,27 @@
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th>Nombre</th>
                         <th>Rut</th>
-                        <th>DvRut</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
                         <th>Email</th>
-                        <th>IdTipo</th>
+                        <th>Tipo cliente</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    {% for c in cliente %}
+                    {% for c in clientes %}
 
                     <tr>
-                        <td>{{c.rutCliente}}</td>
-                        <td>{{c.dvRutCliente}}</td>
+                        <td>{{c.rutCliente}}-{{c.dvRutCliente}}</td>
                         <td>{{c.nombreCliente}}</td>
                         <td>{{c.telefonoCliente}}</td>
                         <td>{{c.emailCliente}}</td>
-                        <td>{{c.idTipoCliente}}</td>
+                        <td>{{c.nombreTC}}</td>
                         <td>
-                            <a href="{% url 'producto_edit' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a>
+                            <a href="{% url 'cliente_edit' c.rutCliente %}" class="btn btn-info btn-sm">Modificar</a>
                             <a href="#" onclick="eliminarCliente({{ c.rutCliente }})" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>

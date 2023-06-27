@@ -13,39 +13,39 @@
             {% csrf_token %}
             <h3 class="fw-bold">Edición de Clientes</h3>
             <div class="form-group mt-4">
-                <label for="nombre" class="fw-bold">Rut del Cliente</label>
+                <label for="rutCliente" class="fw-bold">Rut del Cliente</label>
                 <div class="input-group">
-                    {{ form.rutCliente }}
+                    {{ form_cliente.rutCliente }}
                 </div>
             </div>
             <div class="form-group mt-3">
-                <label for="producto" class="fw-bold">Dígito Verificador</label>
+                <label for="dvRutCliente" class="fw-bold">Dígito Verificador</label>
                 <div class="input-group">
-                    {{ form.dvRutCliente }}
+                    {{ form_cliente.dvRutCliente }}
                 </div>
             </div>
             <div class="form-group mt-3">
-                <label for="categoria" class="fw-bold">Nombre del Cliente</label>
+                <label for="nombreCliente" class="fw-bold">Nombre del Cliente</label>
                 <div class="input-group">
-                    {{ form.nombreCliente }}
+                    {{ form_cliente.nombreCliente }}
                 </div>
             </div>
             <div class="form-group mt-3">
-                <label for="imagen" class="fw-bold">Teléfono del cliente</label>
+                <label for="telefonoCliente" class="fw-bold">Teléfono del cliente</label>
                 <div class="input-group">
-                    {{ form.telefonoCliente }}
+                    {{ form_cliente.telefonoCliente }}
                 </div>
             </div>
             <div class="form-group mt-3">
-                <label for="imagen" class="fw-bold">Email del cliente</label>
+                <label for="emailCliente" class="fw-bold">Email del cliente</label>
                 <div class="input-group">
-                    {{ form.emailCliente }}
+                    {{ form_cliente.emailCliente }}
                 </div>
             </div>
             <div class="form-group mt-3">
-                <label for="imagen" class="fw-bold">Código Tipo Cliente</label>
+                <label for="tipoCliente" class="fw-bold">Tipo Cliente</label>
                 <div class="input-group">
-                    {{ form.idTipoCliente }}
+                    {{ form_cliente.nombreTC }}
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-5 mb-5">
