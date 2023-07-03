@@ -13,12 +13,12 @@ def producto_list(request):
     }
     return render(request,'crud/producto_list.html',data)
 
-def productos(request):
+def productos_crud(request):
     productos = Producto.objects.all()
     data = {
         'productos' : productos
     }
-    return render(request,'crud/productos.html',data)
+    return render(request,'crud/productos_crud.html',data)
 
 def producto_new(request): 
     data = {
