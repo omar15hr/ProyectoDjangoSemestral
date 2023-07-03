@@ -26,44 +26,7 @@
 </head> 
 
 
-<body class=""> 
-
-    <nav class="navbar navbar-expand-md navbar-dark" id="barraModoOscuro">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'contacto' %}'">
-            <i>Italianisimo</i>
-            <img class="nav-img" src="{% static 'core/img/img1.png' %}" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
-            </li>
-            <li class="nav-item" >
-                <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'eventos' %}"  id="textoBarra">Eventos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'nosotros' %}"  id="textoBarra">Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
-            </li>
-            </ul>
-            {% if mostrar_en_navbar %}
-            <form class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Busca aqui..." id="barraBusqueda">
-            <button class="btn btn-danger search-btn" type="button">Buscar</button>
-            </form>
-            {% endif %}
-        </div> 
-        </div>
-    </nav> 
+<body class="">
 
     <!--Main-->
     <main>

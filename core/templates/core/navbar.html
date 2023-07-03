@@ -1,0 +1,50 @@
+<!--Navbar-->
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-dark" id="barraModoOscuro">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <i>Italianisimo</i>
+            <img class="nav-img" src="{% static 'core/img/img1.png' %}" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
+                </li>
+                {% if request.session.usuario.rol == 'USER' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'eventos' %}"  id="textoBarra">Eventos</a>
+                </li>
+                {% endif %} 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nosotros' %}"  id="textoBarra">Nosotros</a>
+                </li>
+                {% if request.session.usuario.rol == 'USER' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
+                </li>
+                {% endif %} 
+                {% if request.session.usuario.rol == 'USER' %}
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"  id="textoBarra">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}"  id="textoBarra">Registrarse</a>
+                </li>                
+                {% endif %}      
+                {% if request.session.usuario.rol == 'USER' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}"  id="textoBarra">Log out</a>
+                </li>
+                {% endif %} 
+            </ul>
+        </div> 
+    </div>
+</nav> 

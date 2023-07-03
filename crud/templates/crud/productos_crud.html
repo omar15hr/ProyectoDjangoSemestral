@@ -7,26 +7,26 @@
 {% block first_content %}
 <!--Seccion 6 -- Cards con productos -->
 <section id="section">
-<div class="row">
-    {% for p in productos %}
-    <div class="col-4 px-5 py-5">
-    <div class="card shadow">
-        {% if p.imagenProducto %}
-        <img src="{{p.imagenProducto.url}}" class="card-img-top img-fluid">
-        {% else %}
-        <img src="{% static 'crud/img/image_not_found.jpg' %}" class="card-img-top img-fluid w-200 h-200">
-        {% endif %}
-        <div class="card-body text-center" id="cartasProductos">
-        <p class="card-text fw-bold text-uppercase">{{p.nombreProducto}}</p>
-        <p class="card-text">
-            {{p.tipoProducto}}
-        </p>
-        <p class="card-text">{{p.precioProducto}}</p>
+    <div class="row">
+        {% for p in productos %}
+        <div class="col-4 px-5 py-5">
+            <div class="card shadow">
+                {% if p.imagenProducto %}
+                <img src="{{p.imagenProducto.url}}" class="card-img-top img-fluid">
+                {% else %}
+                <img src="{% static 'crud/img/image_not_found.jpg' %}" class="card-img-top img-fluid w-200 h-200">
+                {% endif %}
+                <div class="card-body text-center" id="cartasProductos">
+                    <p class="card-text fw-bold text-uppercase">{{p.nombreProducto}}</p>
+                    <p class="card-text">
+                        {{p.tipoProducto}}
+                    </p>
+                    <p class="card-text">{{p.precioProducto}}</p>
+                </div>
+            </div>
         </div>
+        {% endfor%}
     </div>
-    </div>
-    {% endfor%}
-</div>
 </section>
 
 {% endblock %}

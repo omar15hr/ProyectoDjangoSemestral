@@ -19,6 +19,11 @@
     background-color: var(--verde-oscuro);
 }
 
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .nav-img{
     width: 60px;
     height: 30px;
@@ -62,6 +67,43 @@
     font-size: 70px;
     margin: auto;
     cursor: pointer;
+}
+
+#card-login{
+    background-color: var(--verde-oscuro);
+    color: var(--beige-pastel);
+}
+
+#boton-login{
+    background-color: var(--verde-oscuro);
+    color: var(--beige-pastel);
+    border: none;
+}
+
+#boton-login:hover{
+    background-color: #132517;
+    color: var(--beige-pastel);
+    border: none;
+}
+
+#boton-login2{
+    background-color: var(--verde-claro);
+    color: var(--verde-oscuro);
+    border: none;
+}
+
+#boton-login2:hover{
+    background-color: #79923d;
+    color: var(--beige-pastel);
+    border: none;
+}
+
+.card-login{
+    width: 400px;
+}
+
+.inicio-a{
+    text-decoration: none;
 }
 /*
 ====================
