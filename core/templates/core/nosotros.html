@@ -78,7 +78,11 @@
             <div id="textoHora">
               <h3 class="textoModoOscuro">¡Ve la hora!</h3>
               <h5>¿Aun no reservas una mesa?</h5>
-              <button class="btn btn-primary" id="btnReloj">Reserva ya</button>
+              {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
+              <button class="btn btn-primary mt-3" id="boton-nav" onclick="window.location.href='{% url 'contacto' %}' " >Reserva Ya</button>
+              {% else %}
+              <button class="btn btn-primary mt-3" id="boton-nav" onclick="window.location.href='{% url 'register' %}' " >Registrate y reserva</button>
+              {% endif %}  
             </div>
           </div>
       </div>

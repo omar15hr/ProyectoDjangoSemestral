@@ -11,39 +11,80 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
+
                 <li class="nav-item">
                     <a class="nav-link" id="paginaActiva" href="{% url 'index' %}"  id="textoBarra">Inicio</a>
                 </li>
+
+                <!-- Si esta loggeado de algun modo puede ver productos disponibles o menu -->
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
+                <li class="nav-item" >
+                    <a class="nav-link"  href="{% url 'productos_crud' %}"  id="textoBarra">Productos</a>
+                </li>
+                {% else %}
                 <li class="nav-item" >
                     <a class="nav-link"  href="{% url 'productos' %}"  id="textoBarra">Productos</a>
                 </li>
-                {% if request.session.usuario.rol == 'USER' %}
+                {% endif %} 
+
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'eventos' %}"  id="textoBarra">Eventos</a>
                 </li>
                 {% endif %} 
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'nosotros' %}"  id="textoBarra">Nosotros</a>
                 </li>
-                {% if request.session.usuario.rol == 'USER' %}
+
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contacto' %}"  id="textoBarra">Contacto</a>
                 </li>
+                {% endif %}
+
+                {% if request.session.usuario.rol == 'ADMIN' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'producto_new' %}"  id="textoBarra">Agregar producto</a>
+                </li>
                 {% endif %} 
-                {% if request.session.usuario.rol == 'USER' %}
+
+                {% if request.session.usuario.rol == 'ADMIN' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'producto_list' %}"  id="textoBarra">Lista productos</a>
+                </li>
+                {% endif %} 
+
+                {% if request.session.usuario.rol == 'ADMIN' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tipoProducto_new' %}"  id="textoBarra">Agregar Tipo producto</a>
+                </li>
+                {% endif %} 
+
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}"  id="textoBarra">Log in</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}"  id="textoBarra">Registrarse</a>
-                </li>                
-                {% endif %}      
-                {% if request.session.usuario.rol == 'USER' %}
+                </li>
+                {% endif %}
+
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#"  id="textoBarra">{{request.session.usuario.rol}}</a>
+                </li>
+                {% else %}
+                {% endif %} 
+
+                {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}"  id="textoBarra">Log out</a>
                 </li>
+                {% else %}
                 {% endif %} 
+
             </ul>
         </div> 
     </div>

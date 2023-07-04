@@ -53,21 +53,26 @@
                 <p>Comida tradicional hecha desde Roma con amor.</p>
                 <img src="{% static 'core/img/img1.png' %}" alt="">
             </div>
-
-            <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mt-3">
+            {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
+            <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mt-3"> 
                 <h5 class="text-uppercase mb-4 font-weight-bold">Productos</h5>
                 <p><a href="{% url 'productos' %}" class="f-text">Pizza</a></p>
                 <p><a href="{% url 'productos' %}" class="f-text">Lasagna</a></p>
                 <p><a href="{% url 'productos' %}" class="f-text">Pasta</a></p>
             </div>
-
+            {% else %}
+            
+            {% endif %} 
+            {% if request.session.usuario.rol == 'USER' or request.session.usuario.rol == 'ADMIN' %}
             <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mt-3 no-underline">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Eventos</h5>
                 <p><a href="{% url 'eventos' %}" class="f-text">Noche romana</a></p>
                 <p><a href="{% url 'eventos' %}" class="f-text">Tarde Napolitana</a></p>
                 <p><a href="{% url 'eventos' %}" class="f-text">Dia en Milan</a></p>
             </div>
-
+            {% else %}
+            
+            {% endif %} 
             <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Contacto</h5>
                 <p><i class="fa-solid fa-location-dot"></i></i> Santiago Centro, RM 1456, CL</p>
@@ -145,9 +150,22 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--LINK DE JAVASCRIPT-->
     <script src="{% static 'core/js/validation.js' %}""></script>
-
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% block js_mine %}
     <script src="{% static 'core/js/validation.js' %}""></script>
     {% endblock %}
+
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title":"Felicitaciones", 
+                    "text":"{{m}}",
+                    "icon":"success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

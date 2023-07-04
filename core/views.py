@@ -69,11 +69,16 @@ def register(request):
                 email = request.POST['email']
                 password_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
 
+                if User.objects.filter(email=email).exists():
+                    messages.error(request, "El usuario ya está registrado.")
+                    request.session['level_mensaje'] = 'alert-danger'
+                    return redirect('register')  # Redirige nuevamente a la página de registro
+
                 obj = User.objects.create(first_name=first_name, last_name=last_name,email=email,password=password_hash)
                 messages.success(request, "Usuario registrado con éxito!!!!")
                 request.session['level_mensaje'] = 'alert-success'
             
-            return redirect('core/register.html')
+            return redirect('register')
 
         return render(request, 'core/register.html')
 
