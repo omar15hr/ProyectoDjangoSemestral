@@ -1,11 +1,11 @@
-{% extends 'crud/base.html' %} 
+{% extends 'core/base.html' %} 
 
 {% block title %}Lista de Productos{% endblock %}
 
 {% load static %}
 
 {% block first_content %}
-
+{% include "core/navbar.html" %}
 {% block js %}
 <script>
     function eliminarProducto(idProducto){

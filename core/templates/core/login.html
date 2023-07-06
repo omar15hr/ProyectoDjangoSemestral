@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %} 
+
+{% block title %}Log in{% endblock %}
+
+{% load static %}
+
+{% block first_content %}
+
+<section id="section">
+    <div class="container mt-4">
+        {% if messages %}
+            <div class="alert {{ request.session.level_mensaje }} alert-dismissible" role="alert" >
+                <ul>
+                    {% for message in messages %}
+                        <li><strong>{{message}}</strong></li>
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="col justify-content-center my-5">
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                <div class="card border-0 card-login">
+                    <div class="card-header" id="card-login">
+                        <h2 class="card-title text-center">Log in</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3 row">
+                            <label for="email" class="col-sm-3 col-form-label fw-bold">Email</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="email" name="email_login" id="email_login" maxlength=100 required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="password" class="col-sm-3 col-form-label fw-bold">Password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password" name="password_login" id="password_login" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center bg-transparent border-0 mb-4">
+                        <div class="d-grid gap-2 col-4 mx-auto">
+                            <input class="btn btn-primary" id="boton-login" type="submit" value="Login">
+                            <input class="btn btn-dark" id="boton-login2" type="reset" value="Clear">
+                            <a class="inicio-a" href="{% url 'index' %}">Volver al inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+    </div>
+</section>
+{% endblock %}

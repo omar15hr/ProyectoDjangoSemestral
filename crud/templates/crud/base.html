@@ -51,15 +51,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'tipoProducto_new' %}"  id="textoBarra">Agregar Tipo Producto</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'cliente_new' %}"  id="textoBarra">Agregar Cliente</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'cliente_list' %}"  id="textoBarra">Lista Clientes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'tipoCliente_new' %}"  id="textoBarra">Agregar Tipo Clientes</a>
-            </li>
             </ul>
             {% if mostrar_en_navbar %}
             <form class="d-flex">
@@ -187,7 +178,7 @@
     <!--LINK GOOGLE -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--LINK DE JAVASCRIPT-->
-    <script src="{% static 'core/js/validation.js' %}""></script>
+    <script src="{% static 'core/js/validation.js' %}"></script>
     <!-- SWEET ALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
